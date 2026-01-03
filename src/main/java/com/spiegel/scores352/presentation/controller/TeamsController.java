@@ -13,6 +13,12 @@ public class TeamsController {
     @Autowired
     private TeamsServices teamsServices;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TeamDTO> findTeamById(@PathVariable Integer id) {
+        TeamDTO response = this.teamsServices.findTeamByID(id);
+        return(ResponseEntity.ok(response));
+    }
+
     @PostMapping
     public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamCreateDTO teamDTO) {
         TeamDTO response = this.teamsServices.createTeam(teamDTO);

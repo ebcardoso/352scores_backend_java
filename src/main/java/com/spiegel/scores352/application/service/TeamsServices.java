@@ -16,6 +16,11 @@ public class TeamsServices{
     @Autowired
     private TeamMapper mapper;
 
+    public TeamDTO findTeamByID(Integer id) {
+        Team team = this.repository.getReferenceById(id);
+        return(this.mapper.toDto(team));
+    }
+
     public TeamDTO createTeam(TeamCreateDTO teamCreateDTO) {
         Team team = this.mapper.toEntity(teamCreateDTO);
         Team savedTeam = this.repository.save(team);
