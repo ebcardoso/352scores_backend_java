@@ -24,4 +24,9 @@ public class TeamsController {
         TeamDTO response = this.teamsServices.createTeam(teamDTO);
         return(ResponseEntity.ok(response));
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteTeam(@PathVariable Integer id) {
+        this.teamsServices.deleteTeam(id);
+    }
 }

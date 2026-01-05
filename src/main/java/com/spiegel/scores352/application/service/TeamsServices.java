@@ -27,4 +27,8 @@ public class TeamsServices{
 
         return(this.mapper.toDto(savedTeam));
     }
+
+    public void deleteTeam(Integer id) {
+        this.repository.deleteById(id);
+    }
 }
