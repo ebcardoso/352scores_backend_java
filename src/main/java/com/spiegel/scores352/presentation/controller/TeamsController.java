@@ -2,6 +2,7 @@ package com.spiegel.scores352.presentation.controller;
 
 import com.spiegel.scores352.application.dto.TeamCreateDTO;
 import com.spiegel.scores352.application.dto.TeamDTO;
+import com.spiegel.scores352.application.dto.TeamUpdateDTO;
 import com.spiegel.scores352.application.service.TeamsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,12 @@ public class TeamsController {
     @PostMapping
     public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamCreateDTO teamDTO) {
         TeamDTO response = this.teamsServices.createTeam(teamDTO);
+        return(ResponseEntity.ok(response));
+    }
+
+    @PutMapping
+    public ResponseEntity<TeamDTO> updateTeam(@RequestBody TeamUpdateDTO teamDTO) {
+        TeamDTO response = this.teamsServices.updateTeam(teamDTO);
         return(ResponseEntity.ok(response));
     }
 

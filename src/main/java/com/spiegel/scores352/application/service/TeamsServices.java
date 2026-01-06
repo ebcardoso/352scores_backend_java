@@ -2,6 +2,7 @@ package com.spiegel.scores352.application.service;
 
 import com.spiegel.scores352.application.dto.TeamCreateDTO;
 import com.spiegel.scores352.application.dto.TeamDTO;
+import com.spiegel.scores352.application.dto.TeamUpdateDTO;
 import com.spiegel.scores352.application.mapper.TeamMapper;
 import com.spiegel.scores352.domain.model.Team;
 import com.spiegel.scores352.domain.repository.TeamsRepository;
@@ -26,6 +27,13 @@ public class TeamsServices{
         Team savedTeam = this.repository.save(team);
 
         return(this.mapper.toDto(savedTeam));
+    }
+
+    public TeamDTO updateTeam(TeamUpdateDTO teamUpdateDTO) {
+        Team team = this.mapper.toEntity(teamUpdateDTO);
+        Team updatedTeam = this.repository.save(team);
+
+        return(this.mapper.toDto(updatedTeam));
     }
 
     public void deleteTeam(Integer id) {
