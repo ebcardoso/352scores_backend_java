@@ -7,6 +7,8 @@ import com.spiegel.scores352.application.mapper.TeamMapper;
 import com.spiegel.scores352.domain.model.Team;
 import com.spiegel.scores352.domain.repository.TeamsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +18,10 @@ public class TeamsServices{
 
     @Autowired
     private TeamMapper mapper;
+    
+    public Page<TeamDTO> listTeams(Pageable pageable) {
+        return(this.repository.findAll(pageable).map(mapper::toDto));
+    }
 
     public TeamDTO findTeamByID(Integer id) {
         Team team = this.repository.getReferenceById(id);
