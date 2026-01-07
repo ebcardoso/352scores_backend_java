@@ -1,16 +1,14 @@
 package com.spiegel.scores352.domain.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "team")
-@Data
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
-
+public class Team extends BaseModel {    
     @Column(name = "name")
     private String name;
 
