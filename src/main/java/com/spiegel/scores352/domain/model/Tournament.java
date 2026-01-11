@@ -22,6 +22,9 @@ public class Tournament extends BaseModel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
+    @Column(name = "tournament_type")
+    private int tournamentType;
+
     @Column(name = "is_active")
     private boolean active;
 }
