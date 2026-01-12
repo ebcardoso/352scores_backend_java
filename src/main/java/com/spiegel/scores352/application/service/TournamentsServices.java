@@ -22,4 +22,8 @@ public class TournamentsServices {
 
         return(this.mapper.toDto(savedTournament));
     }
+    
+    public void deleteTournament(Long id) {
+        this.tournamentsRepository.deleteById(id);
+    }
 }
