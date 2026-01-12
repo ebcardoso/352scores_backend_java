@@ -16,6 +16,11 @@ public class TournamentsServices {
     @Autowired
     private TournamentMapper mapper;
 
+    public TournamentDTO findTournamentById(Long id) {
+        Tournament tournament = this.tournamentsRepository.getReferenceById(id);
+        return(this.mapper.toDto(tournament));
+    }
+
     public TournamentDTO createTournament(TournamentCreateDTO tournamentCreateDTO) {
         Tournament tournament = this.mapper.toEntity(tournamentCreateDTO);
         Tournament savedTournament = this.tournamentsRepository.save(tournament);

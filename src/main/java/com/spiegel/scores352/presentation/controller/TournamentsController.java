@@ -10,6 +10,7 @@ import com.spiegel.scores352.application.dto.TournamentCreateDTO;
 import com.spiegel.scores352.application.dto.TournamentDTO;
 import com.spiegel.scores352.application.service.TournamentsServices;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -17,6 +18,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TournamentsController {
     @Autowired
     private TournamentsServices tournamentsServices;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TournamentDTO> findTournamentById(@PathVariable Long id) {
+        TournamentDTO response = this.tournamentsServices.findTournamentById(id);
+        return(ResponseEntity.ok(response));
+    }
 
     @PostMapping
     public ResponseEntity<TournamentDTO> createTournament(@RequestBody TournamentCreateDTO tournamentDTO) {
